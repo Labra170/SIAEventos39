@@ -3,9 +3,23 @@ import java.util.*;
 public class SIAEventosGrupo39 {
     public static void main(String[] args) throws IOException
     {
+        // Creacion inicial
         ArrayList<Lugar> lugares = new ArrayList<>();
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         String ingresado;
+        
+        // Datos iniciales
+        Lugar lugar = new Lugar("IBC", "Brasil 2241", 128);
+        Evento evento = new Evento("Graduacion ICI", 64, "Graduacion");
+        lugar.anadirEvento(evento);
+        lugares.add(lugar);
+        lugar = new Lugar("Casa Central", "Brasil 2950", 256);
+        evento = new Evento("Claustro Pleno 2024", 128, "Conferencia");
+        lugar.anadirEvento(evento);
+        lugares.add(lugar);
+        
+        
+        // Menu
         int opcion;
         while (true)
         {
@@ -20,12 +34,12 @@ public class SIAEventosGrupo39 {
             ingresado = lector.readLine();
             System.out.println();
             opcion = Integer.parseInt( ingresado );
-            if (opcion == 0) {System.out.println("Hasta la proxima");break;}
+            if (opcion == 0) {System.out.println("Hasta la proxima");break;} // Salir del programa
             switch (opcion)
             {
                 case 1 -> // Agregar lugar
                 {
-                    Lugar lugar = new Lugar();
+                    lugar = new Lugar();
                     System.out.print("Ingresa el nombre: ");
                     lugar.setNombre(lector.readLine());
                     System.out.print("Ingresa la direccion: ");
@@ -34,6 +48,7 @@ public class SIAEventosGrupo39 {
                     lugar.setCapacidad(lector.readLine());
                     lugares.add(lugar);
                 }
+
                 case 2 -> // Mostrar lugares
                 {
                     for (int i = 0; i < lugares.size(); i++)
@@ -64,7 +79,7 @@ public class SIAEventosGrupo39 {
                         else i++;
                     }
                 }
-                case 4 ->
+                case 4 -> // Mostrar eventos en el lugar
                 {
                     int i = 0;
                     while (true)

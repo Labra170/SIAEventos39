@@ -7,14 +7,24 @@ public class Lugar {
     private int capacidad;
     private HashMap<String, Evento> eventos;
     
-    // Constructor
+    // Constructores
     public Lugar()
     {
+        nombre = "";
         direccion = "";
         capacidad = 0;
         eventos = new HashMap<>();
     }
+    // Constructor con parametro, util cuando se ingresa datos iniciales por codigo
+    public Lugar(String nombre, String direccion, int capacidad)
+    {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.capacidad = capacidad;
+        eventos = new HashMap<>();
+    }
     
+    // Metodos
     public void anadirEvento() throws IOException
     {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
@@ -31,12 +41,17 @@ public class Lugar {
         
         System.out.println("Evento agregado");
     }
+    // Sobrecarga anadirEvento, util cuando se anaden eventos dentro del codigo como dato inicial
+    public void anadirEvento(Evento evento)
+    {
+        eventos.put(evento.getNombre(), evento);
+    }
+    
     
     public void mostrarEventos() throws IOException
     {
         eventos.forEach((k, v) ->
         {
-            System.out.println();
             System.out.print("Nombre: " + v.getNombre());
             System.out.print(" Cantidad de asistente: " + v.getAsistentes());
             System.out.println(" Tipo de evento: " + v.getTipo());
