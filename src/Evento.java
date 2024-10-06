@@ -1,21 +1,23 @@
-public class Evento
+public class Evento 
 {
     private String nombre;
     private int asistentes;
     private String tipo;
 
-    // Constructores
     public Evento() {
         nombre = "Pred";
         asistentes = 0;
         tipo = "Pred";
     }
-    // Constructor con parametros, util cuando se ingresa como dato inicial dentro del codigo
     public Evento(String nombre, int asistentes, String tipo)
     {
         this.nombre = nombre;
         this.asistentes = asistentes;
         this.tipo = tipo;
+    }
+    public String toString()
+    {
+        return nombre+", "+Integer.toString(asistentes)+", "+tipo+"\n";
     }
     
     // Setters y Getters

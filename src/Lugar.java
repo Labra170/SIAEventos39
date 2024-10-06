@@ -5,17 +5,16 @@ public class Lugar {
     private String nombre;
     private String direccion;
     private int capacidad;
+    private String ret;
     private HashMap<String, Evento> eventos;
     
-    // Constructores
+    // Constructor
     public Lugar()
     {
-        nombre = "";
         direccion = "";
         capacidad = 0;
         eventos = new HashMap<>();
     }
-    // Constructor con parametro, util cuando se ingresa datos iniciales por codigo
     public Lugar(String nombre, String direccion, int capacidad)
     {
         this.nombre = nombre;
@@ -24,38 +23,33 @@ public class Lugar {
         eventos = new HashMap<>();
     }
     
-    // Metodos
-    public void anadirEvento() throws IOException
-    {
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        String ingresado;
-        Evento evento = new Evento();
-        
-        System.out.print("Ingresa el nombre del evento: ");
-        evento.setNombre(lector.readLine());
-        System.out.print("Ingresa la cantidad de asistentes al evento: ");
-        evento.setAsistentes(lector.readLine());
-        System.out.print("Ingresa el tipo de evento: ");
-        evento.setTipo(lector.readLine());
-        eventos.put(evento.getNombre(), evento);
-        
-        System.out.println("Evento agregado");
-    }
-    // Sobrecarga anadirEvento, util cuando se anaden eventos dentro del codigo como dato inicial
     public void anadirEvento(Evento evento)
     {
         eventos.put(evento.getNombre(), evento);
     }
     
-    
     public void mostrarEventos() throws IOException
     {
         eventos.forEach((k, v) ->
         {
+            System.out.println();
             System.out.print("Nombre: " + v.getNombre());
             System.out.print(" Cantidad de asistente: " + v.getAsistentes());
             System.out.println(" Tipo de evento: " + v.getTipo());
         });
+    }
+    public String listarEventos()
+    {
+        ret = "";
+        eventos.forEach((k, v) ->
+                {
+                    ret += v.toString();
+                });
+        return ret;
+    }
+    public int cantidadEventos()
+    {
+        return eventos.size();
     }
     
     // Setters y Getters
@@ -89,5 +83,4 @@ public class Lugar {
         System.out.println(capacidad);
         this.capacidad = Integer.parseInt(capacidad);
     }
-    
 }

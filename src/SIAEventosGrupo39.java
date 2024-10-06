@@ -1,13 +1,10 @@
 import java.io.*;
 import java.util.*;
-public class SIAEventosGrupo39 {
+import javax.swing.JFrame;
+public class SIAEventosGrupo39{
     public static void main(String[] args) throws IOException
     {
-        // Creacion inicial
         ArrayList<Lugar> lugares = new ArrayList<>();
-        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
-        String ingresado;
-        
         // Datos iniciales
         Lugar lugar = new Lugar("IBC", "Brasil 2241", 128);
         Evento evento = new Evento("Graduacion ICI", 64, "Graduacion");
@@ -18,8 +15,18 @@ public class SIAEventosGrupo39 {
         lugar.anadirEvento(evento);
         lugares.add(lugar);
         
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                VistaMenu viewMenu = new VistaMenu(lugares);
+                viewMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                viewMenu.setLocationRelativeTo(null);
+                viewMenu.setVisible(true);
+            }
+        });
         
-        // Menu
+        
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+        String ingresado;
         int opcion;
         while (true)
         {
@@ -34,52 +41,10 @@ public class SIAEventosGrupo39 {
             ingresado = lector.readLine();
             System.out.println();
             opcion = Integer.parseInt( ingresado );
-            if (opcion == 0) {System.out.println("Hasta la proxima");break;} // Salir del programa
+            if (opcion == 0) {System.out.println("Hasta la proxima");break;}
             switch (opcion)
             {
-                case 1 -> // Agregar lugar
-                {
-                    lugar = new Lugar();
-                    System.out.print("Ingresa el nombre: ");
-                    lugar.setNombre(lector.readLine());
-                    System.out.print("Ingresa la direccion: ");
-                    lugar.setDireccion(lector.readLine());
-                    System.out.print("Ingresa la capacidad de asistentes: ");
-                    lugar.setCapacidad(lector.readLine());
-                    lugares.add(lugar);
-                }
-
-                case 2 -> // Mostrar lugares
-                {
-                    for (int i = 0; i < lugares.size(); i++)
-                    {
-                        System.out.println("Nombre: " + lugares.get(i).getNombre() + " Direccion: " + lugares.get(i).getDireccion());
-                    }
-                }
-                case 3 -> // Agregar evento
-                {
-                    int i = 0;
-                    while (true)
-                    {
-                        if (i == 0)
-                        {
-                        System.out.print("En donde quieres agregar el evento? ");
-                        ingresado = lector.readLine();
-                        }
-                        if (lugares.get(i).getNombre().equals(ingresado))
-                        {
-                            lugares.get(i).anadirEvento();
-                            break;
-                        }
-                        if (i == lugares.size()-1)
-                        {
-                            System.out.println("El lugar no existe! Intenta nuevamente");
-                            i = 0;
-                        }
-                        else i++;
-                    }
-                }
-                case 4 -> // Mostrar eventos en el lugar
+                case 4 ->
                 {
                     int i = 0;
                     while (true)
@@ -105,4 +70,5 @@ public class SIAEventosGrupo39 {
             }
         }
     }
+    
 }
