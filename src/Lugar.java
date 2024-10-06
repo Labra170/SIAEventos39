@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 public class Lugar {
     // Atributos Clase Lugar
     private String nombre;
@@ -27,26 +26,31 @@ public class Lugar {
     {
         eventos.put(evento.getNombre(), evento);
     }
-    
-    public void mostrarEventos() throws IOException
-    {
-        eventos.forEach((k, v) ->
-        {
-            System.out.println();
-            System.out.print("Nombre: " + v.getNombre());
-            System.out.print(" Cantidad de asistente: " + v.getAsistentes());
-            System.out.println(" Tipo de evento: " + v.getTipo());
-        });
-    }
     public String listarEventos()
     {
         ret = "";
         eventos.forEach((k, v) ->
-                {
-                    ret += v.toString();
-                });
+            {
+                ret += v.toString();
+            });
         return ret;
     }
+    public String listarEventosNombre()
+    {
+        ret = "";
+        eventos.forEach((k, v) ->
+            {
+                ret += v.getNombre()+"\n";
+            });
+        return ret;
+    }
+    public void modificarEvento(String nombreEvento, int asistentesEvento, String tipoEvento, String nOriginal)
+    {
+        Evento evento = new Evento(nombreEvento, asistentesEvento, tipoEvento);
+        eventos.remove(nOriginal);
+        eventos.put(nombreEvento, evento);
+    }
+    
     public int cantidadEventos()
     {
         return eventos.size();
@@ -76,11 +80,9 @@ public class Lugar {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
-    public void setCapacidad(String capacidad) // Sobrecarga, por si el string contiene caracteres no validos
+    public Evento getEvento(String nombre)
     {
-        capacidad = capacidad.replaceAll("[^0-9]", " ");
-        capacidad = capacidad.replaceAll(" +", "");
-        System.out.println(capacidad);
-        this.capacidad = Integer.parseInt(capacidad);
+        Evento evento = eventos.get(nombre);
+        return evento;
     }
 }

@@ -41,7 +41,6 @@ public class Evento
     {
         asistentes = asistentes.replaceAll("[^0-9]", " ");
         asistentes = asistentes.replaceAll(" +", "");
-        System.out.println(asistentes);
         this.asistentes = Integer.parseInt(asistentes);
     }
 

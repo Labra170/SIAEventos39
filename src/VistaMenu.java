@@ -27,6 +27,8 @@ public class VistaMenu extends javax.swing.JFrame {
         btnAgregarEvento = new javax.swing.JButton();
         btnMostrarEventos = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        LabelModificarEvento = new javax.swing.JLabel();
+        btnModificarEvento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +81,15 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
 
+        LabelModificarEvento.setText("5.- Modificar evento");
+
+        btnModificarEvento.setText("                ");
+        btnModificarEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarEventoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,9 +105,11 @@ public class VistaMenu extends javax.swing.JFrame {
                             .addComponent(LabelListaLugares)
                             .addComponent(LabelAgregarEvento)
                             .addComponent(LabelMostrarEventos)
-                            .addComponent(LabelSalir))
+                            .addComponent(LabelSalir)
+                            .addComponent(LabelModificarEvento))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnModificarEvento)
                             .addComponent(btnSalir)
                             .addComponent(btnMostrarEventos)
                             .addComponent(btnAgregarEvento)
@@ -127,7 +140,11 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelMostrarEventos)
                     .addComponent(btnMostrarEventos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelModificarEvento)
+                    .addComponent(btnModificarEvento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelSalir)
                     .addComponent(btnSalir))
@@ -179,6 +196,16 @@ public class VistaMenu extends javax.swing.JFrame {
         viewMEvento.setVisible(true);
     }//GEN-LAST:event_btnMostrarEventosActionPerformed
 
+    private void btnModificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEventoActionPerformed
+        // TODO add your handling code here:
+        VistaModificarEvento viewMoEvento = new VistaModificarEvento(lugares);
+        viewMoEvento.setAlwaysOnTop(true);
+        viewMoEvento.setLocationRelativeTo(null);
+        viewMoEvento.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        viewMoEvento.setVisible(true);
+        
+    }//GEN-LAST:event_btnModificarEventoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -216,12 +243,14 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel LabelAgregarLugar;
     private javax.swing.JLabel LabelBienvenido;
     private javax.swing.JLabel LabelListaLugares;
+    private javax.swing.JLabel LabelModificarEvento;
     private javax.swing.JLabel LabelMostrarEventos;
     private javax.swing.JLabel LabelPregunta;
     private javax.swing.JLabel LabelSalir;
     public javax.swing.JButton btnAgregarEvento;
     public javax.swing.JButton btnAgregarLugar;
     public javax.swing.JButton btnListaLugares;
+    private javax.swing.JButton btnModificarEvento;
     public javax.swing.JButton btnMostrarEventos;
     public javax.swing.JButton btnSalir;
     // End of variables declaration//GEN-END:variables
