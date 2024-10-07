@@ -36,15 +36,21 @@
                           <Component id="LabelMostrarEventos" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelSalir" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="LabelModificarEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelEliiminarEvento" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelImportar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelExportar" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnExportar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnImportar" min="-2" max="-2" attributes="0"/>
                           <Component id="btnModificarEvento" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMostrarEventos" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAgregarEvento" min="-2" max="-2" attributes="0"/>
                           <Component id="btnListaLugares" min="-2" max="-2" attributes="0"/>
                           <Component id="btnAgregarLugar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEliminarEvento" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -84,7 +90,22 @@
                   <Component id="LabelModificarEvento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnModificarEvento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="64" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelEliiminarEvento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEliminarEvento" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelImportar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnImportar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelExportar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnExportar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LabelSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -197,6 +218,39 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarEventoActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEliiminarEvento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="6.- Eliminar evento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEliminarEvento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarEventoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelImportar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="7.- Importar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnImportar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelExportar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="8.- Exportar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnExportar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

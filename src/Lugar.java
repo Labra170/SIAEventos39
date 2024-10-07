@@ -50,6 +50,10 @@ public class Lugar {
         eventos.remove(nOriginal);
         eventos.put(nombreEvento, evento);
     }
+    public void eliminarEvento(String nombreEliminar)
+    {
+        eventos.remove(nombreEliminar);
+    }
     
     public int cantidadEventos()
     {

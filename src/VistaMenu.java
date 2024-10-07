@@ -29,6 +29,12 @@ public class VistaMenu extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         LabelModificarEvento = new javax.swing.JLabel();
         btnModificarEvento = new javax.swing.JButton();
+        labelEliiminarEvento = new javax.swing.JLabel();
+        btnEliminarEvento = new javax.swing.JButton();
+        labelImportar = new javax.swing.JLabel();
+        btnImportar = new javax.swing.JButton();
+        labelExportar = new javax.swing.JLabel();
+        btnExportar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +96,23 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
 
+        labelEliiminarEvento.setText("6.- Eliminar evento");
+
+        btnEliminarEvento.setText("                ");
+        btnEliminarEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEventoActionPerformed(evt);
+            }
+        });
+
+        labelImportar.setText("7.- Importar");
+
+        btnImportar.setText("                ");
+
+        labelExportar.setText("8.- Exportar");
+
+        btnExportar.setText("                ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,15 +129,21 @@ public class VistaMenu extends javax.swing.JFrame {
                             .addComponent(LabelAgregarEvento)
                             .addComponent(LabelMostrarEventos)
                             .addComponent(LabelSalir)
-                            .addComponent(LabelModificarEvento))
+                            .addComponent(LabelModificarEvento)
+                            .addComponent(labelEliiminarEvento)
+                            .addComponent(labelImportar)
+                            .addComponent(labelExportar))
                         .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnExportar)
+                            .addComponent(btnImportar)
                             .addComponent(btnModificarEvento)
                             .addComponent(btnSalir)
                             .addComponent(btnMostrarEventos)
                             .addComponent(btnAgregarEvento)
                             .addComponent(btnListaLugares)
-                            .addComponent(btnAgregarLugar))))
+                            .addComponent(btnAgregarLugar)
+                            .addComponent(btnEliminarEvento))))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,7 +173,19 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelModificarEvento)
                     .addComponent(btnModificarEvento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEliiminarEvento)
+                    .addComponent(btnEliminarEvento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelImportar)
+                    .addComponent(btnImportar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelExportar)
+                    .addComponent(btnExportar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabelSalir)
                     .addComponent(btnSalir))
@@ -206,6 +247,15 @@ public class VistaMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnModificarEventoActionPerformed
 
+    private void btnEliminarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEventoActionPerformed
+        // TODO add your handling code here:
+        VistaEliminarEvento viewEEvento = new VistaEliminarEvento(lugares);
+        viewEEvento.setAlwaysOnTop(true);
+        viewEEvento.setLocationRelativeTo(null);
+        viewEEvento.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        viewEEvento.setVisible(true);
+    }//GEN-LAST:event_btnEliminarEventoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,9 +299,15 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel LabelSalir;
     public javax.swing.JButton btnAgregarEvento;
     public javax.swing.JButton btnAgregarLugar;
+    private javax.swing.JButton btnEliminarEvento;
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JButton btnImportar;
     public javax.swing.JButton btnListaLugares;
     private javax.swing.JButton btnModificarEvento;
     public javax.swing.JButton btnMostrarEventos;
     public javax.swing.JButton btnSalir;
+    private javax.swing.JLabel labelEliiminarEvento;
+    private javax.swing.JLabel labelExportar;
+    private javax.swing.JLabel labelImportar;
     // End of variables declaration//GEN-END:variables
 }
