@@ -17,6 +17,7 @@ public class SIAEventosGrupo39{
         //Ejecucion ventana Menu
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // Se traspasa a la ventana el ArrayList de lugares, para tener persistencia
                 VistaMenu viewMenu = new VistaMenu(lugares);
                 viewMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 viewMenu.setLocationRelativeTo(null);

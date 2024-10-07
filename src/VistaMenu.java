@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.io.BufferedWriter; 
+import java.io.FileWriter; 
+import java.io.IOException;
 public class VistaMenu extends javax.swing.JFrame {
     private ArrayList<Lugar> lugares;
+    
+    // Constructor de la ventana
     public VistaMenu(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
@@ -108,10 +113,20 @@ public class VistaMenu extends javax.swing.JFrame {
         labelImportar.setText("7.- Importar");
 
         btnImportar.setText("                ");
+        btnImportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportarActionPerformed(evt);
+            }
+        });
 
         labelExportar.setText("8.- Exportar");
 
         btnExportar.setText("                ");
+        btnExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,6 +212,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnAgregarLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLugarActionPerformed
         // TODO add your handling code here:
+        // Se abre una ventana extra al presionar el boton de la opcion "Agregar lugar"
         VistaAgregarLugar viewAgregarLugar = new VistaAgregarLugar(lugares); 
         viewAgregarLugar.setAlwaysOnTop(true);
         viewAgregarLugar.setLocationRelativeTo(null);
@@ -206,11 +222,13 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
+        // Finaliza el programa al apretar el boton
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnListaLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaLugaresActionPerformed
         // TODO add your handling code here:
+        // Se crea una ventana extra al presionar el boton de la opcion "Mostrar lugares"
         VistaMostrarLugares viewMLugar = new VistaMostrarLugares(lugares);
         viewMLugar.setAlwaysOnTop(true);
         viewMLugar.setLocationRelativeTo(null);
@@ -220,6 +238,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnAgregarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEventoActionPerformed
         // TODO add your handling code here:
+        // Se crea una ventana extra al presionar el boton de la opcion "Agregar evento"
         VistaAgregarEvento viewAEvento = new VistaAgregarEvento(lugares);
         viewAEvento.setAlwaysOnTop(true);
         viewAEvento.setLocationRelativeTo(null);
@@ -230,6 +249,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnMostrarEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEventosActionPerformed
         // TODO add your handling code here:
+        // Se crea una ventana extra al presionar el boton de la opcion "Mostrar eventos"
         VistaMostrarEventos viewMEvento = new VistaMostrarEventos(lugares);
         viewMEvento.setAlwaysOnTop(true);
         viewMEvento.setLocationRelativeTo(null);
@@ -239,6 +259,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnModificarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEventoActionPerformed
         // TODO add your handling code here:
+        // Se crea una ventana extra al presionar el boton de la opcion "Modificar evento"
         VistaModificarEvento viewMoEvento = new VistaModificarEvento(lugares);
         viewMoEvento.setAlwaysOnTop(true);
         viewMoEvento.setLocationRelativeTo(null);
@@ -249,12 +270,43 @@ public class VistaMenu extends javax.swing.JFrame {
 
     private void btnEliminarEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEventoActionPerformed
         // TODO add your handling code here:
+        // Se crea una ventana extra al presionar el boton de la opcion "Eliminar evento"
         VistaEliminarEvento viewEEvento = new VistaEliminarEvento(lugares);
         viewEEvento.setAlwaysOnTop(true);
         viewEEvento.setLocationRelativeTo(null);
         viewEEvento.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         viewEEvento.setVisible(true);
     }//GEN-LAST:event_btnEliminarEventoActionPerformed
+
+    private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImportarActionPerformed
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+        // TODO add your handling code here:{
+        // Al presionar el boton de la opcion exportar, se crea un CSV en la ubicacion del proyecto
+        
+        String csvFile = "data.csv"; // Nombre del csv
+        String[] headers = {"Nombre lugar", "Direccion lugar", "Maxima Asistentes"}; // "Parametros" del CSV
+
+ 
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFile))) { 
+            // Se escriben los parametros
+            writer.write(String.join(",", headers)); 
+            writer.newLine(); 
+ 
+            // Se escriben los datos del lugar
+            for (int i = 0; i < lugares.size(); i++) { 
+                writer.write(String.join(",", lugares.get(i).getNombre())+ " ");
+                writer.write(String.join(",", lugares.get(i).getDireccion())+ " "); 
+                writer.write(String.join(",", String.valueOf(lugares.get(i).getCapacidad()))); 
+                writer.newLine(); 
+            }
+            
+        } catch (IOException e) { 
+            e.printStackTrace(); 
+        } 
+    }//GEN-LAST:event_btnExportarActionPerformed
 
     /**
      * @param args the command line arguments

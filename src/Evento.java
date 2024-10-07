@@ -17,6 +17,7 @@ public class Evento
     }
     public String toString()
     {
+        // Funcion para retornar los datos del evento a una cadena.
         return nombre+", "+Integer.toString(asistentes)+", "+tipo+"\n";
     }
     

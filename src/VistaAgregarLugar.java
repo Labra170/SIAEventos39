@@ -1,15 +1,4 @@
-
 import java.util.ArrayList;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author Labra
- */
 public class VistaAgregarLugar extends javax.swing.JFrame {
     private ArrayList<Lugar> lugares;
     public VistaAgregarLugar(ArrayList<Lugar> lugares) {
@@ -110,11 +99,13 @@ public class VistaAgregarLugar extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        // Se cierra la ventana
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        // Se crea un objeto Lugar, se agrega al ArrayList
         Lugar lugar = new Lugar(txtNombre.getText(), txtDireccion.getText(), Integer. parseInt(txtMaximaAsistentes.getText()));
         lugares.add(lugar);
         this.dispose();

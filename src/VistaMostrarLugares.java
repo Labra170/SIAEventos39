@@ -9,13 +9,19 @@ public class VistaMostrarLugares extends javax.swing.JFrame {
     public VistaMostrarLugares(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
+        
+        // Columnas de la tabla
         String[] header = {"Nombre", "Direccion", "Capacidad Maxima"};
+        // Se crea un modelo de tabla
         DefaultTableModel model = new DefaultTableModel(header, 0);
         for (int i = 0; i < lugares.size(); i++)
         {
+            // Se escriben los datos correspondientes en el modelo
             model.addRow(new Object[]{lugares.get(i).getNombre(), lugares.get(i).getDireccion(), lugares.get(i).getCapacidad()});
         }
+        // Se deshabilita la edicion
         jTable1.setDefaultEditor(Object.class, null);
+        // Se asigna el modelo a la tabla
         jTable1.setModel(model);
     }
 
@@ -76,7 +82,7 @@ public class VistaMostrarLugares extends javax.swing.JFrame {
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.dispose(); // Se cierra la ventana
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     /**

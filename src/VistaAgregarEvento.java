@@ -5,11 +5,14 @@ public class VistaAgregarEvento extends javax.swing.JFrame {
     public VistaAgregarEvento(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
+        // Se crea un modelo para el ComboBox
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (int i = 0; i < lugares.size(); i++)
         {
+            // Se agrega cada lugar (Su nombre) al modelo
             model.addElement(lugares.get(i).getNombre());
         }
+        // Se asigna el modelo al ComboBox
         jComboBox2.setModel(model);
     }
 
@@ -120,15 +123,17 @@ public class VistaAgregarEvento extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        // Se cierra la ventana
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        int num = jComboBox2.getSelectedIndex();
+        int num = jComboBox2.getSelectedIndex(); // En base al lugar elegido
         Evento evento = new Evento(txtNombre.getText(), Integer. parseInt(txtCAsistentes.getText()), txtTipo.getText());
+        // Se agrega el evento al mapa
         lugares.get(num).anadirEvento(evento);
-        this.dispose();
+        this.dispose(); // Se cierra la ventana
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**

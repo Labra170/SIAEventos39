@@ -4,14 +4,19 @@ import javax.swing.DefaultComboBoxModel;
 
 public class VistaEliminarEvento extends javax.swing.JFrame {
     private ArrayList<Lugar> lugares;
+    
+    // Constructor de la ventana
     public VistaEliminarEvento(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
+        // Se crea un modelo para el ComboBox
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (int i = 0; i < lugares.size(); i++)
         {
+            // Se agrega cada lugar (Su nombre) al modelo
             model.addElement(lugares.get(i).getNombre());
         }
+        // Se asigna dicho modelo creado al modelo del ComboBox en el JFrame
         jComboBoxLugares.setModel(model);
     }
 
@@ -101,31 +106,37 @@ public class VistaEliminarEvento extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        // Se desecha la ventana
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void jComboBoxLugaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLugaresActionPerformed
         // TODO add your handling code here:
+        //Al seleccionar un lugar del ComboBox...
         
         int num = jComboBoxLugares.getSelectedIndex();
         Lugar lugar = lugares.get(num);
+        // Se crea un array para los nombres de los eventos en el lugar seleccionado
         String ss = lugar.listarEventosNombre();
         String[] arr = ss.split("\n");
+        // Se crea un modelo para el ComboBox de Eventos.
         DefaultComboBoxModel<String> modelEventos = new DefaultComboBoxModel<>();
         for (int i = 0; i < arr.length; i++)
         {
             modelEventos.addElement(arr[i]);
         }
+        // Se asigna el modelo del ComboBox al que esta en el JFrame
         jComboBoxEventos.setModel(modelEventos);
     }//GEN-LAST:event_jComboBoxLugaresActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int num = jComboBoxLugares.getSelectedIndex();
+        // Al presionar el boton eliminar...
+        int num = jComboBoxLugares.getSelectedIndex(); // Se toma el indice del lugar seleccionado.
         Lugar lugar = lugares.get(num);
-        lugar.eliminarEvento((String) jComboBoxEventos.getSelectedItem());
+        lugar.eliminarEvento((String) jComboBoxEventos.getSelectedItem()); // Se elimina el evento del lugar.
         
-        this.dispose();
+        this.dispose(); // Se cierra la ventana
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

@@ -24,10 +24,12 @@ public class Lugar {
     
     public void anadirEvento(Evento evento)
     {
+        // Se agrega el evento al HashMap eventos.
         eventos.put(evento.getNombre(), evento);
     }
     public String listarEventos()
     {
+        // Se establece el String en vacio, se agregan todos los datos del evento como cadena.
         ret = "";
         eventos.forEach((k, v) ->
             {
@@ -37,6 +39,7 @@ public class Lugar {
     }
     public String listarEventosNombre()
     {
+        // Se establece el String en vacio, se agrega solo el nombre de cada evento como cadena
         ret = "";
         eventos.forEach((k, v) ->
             {
@@ -46,12 +49,15 @@ public class Lugar {
     }
     public void modificarEvento(String nombreEvento, int asistentesEvento, String tipoEvento, String nOriginal)
     {
+        // Funcion para modificar el HashMap
         Evento evento = new Evento(nombreEvento, asistentesEvento, tipoEvento);
         eventos.remove(nOriginal);
         eventos.put(nombreEvento, evento);
+        // Se elimina y agrega el evento para poder hacer el cambio de Key del HashMap
     }
     public void eliminarEvento(String nombreEliminar)
     {
+        // Como no se puede acceder a la coleccion por ser privada, se accede y elimina de esta manera
         eventos.remove(nombreEliminar);
     }
     

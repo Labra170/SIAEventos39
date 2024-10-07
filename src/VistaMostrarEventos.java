@@ -10,11 +10,14 @@ public class VistaMostrarEventos extends javax.swing.JFrame {
     public VistaMostrarEventos(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
+        // Se crea un modelo para el ComboBox
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (int i = 0; i < lugares.size(); i++)
         {
+            // Se agrega el evento al modelo
             model.addElement(lugares.get(i).getNombre());
         }
+        // Se asigna el modelo al ComboBox
         jComboBox1.setModel(model);
     }
 
@@ -116,7 +119,7 @@ public class VistaMostrarEventos extends javax.swing.JFrame {
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.dispose(); // Se cierra la ventana
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -125,10 +128,12 @@ public class VistaMostrarEventos extends javax.swing.JFrame {
         Lugar lugar = lugares.get(num);
         String ss = lugar.listarEventos();
         String[] arr = ss.split("\n");
+        // Se crea un modelo de tabla
         DefaultTableModel modelTable = (DefaultTableModel) jTable1.getModel();
         modelTable.setNumRows(0);
         for (int i = 0; i <arr.length; i++)
         {
+            // Se agregan filas a la tabla con los datos correspondientes
             String[] cc = arr[i].split(", ");
             modelTable.addRow(cc);
         }

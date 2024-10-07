@@ -4,14 +4,19 @@ import javax.swing.DefaultComboBoxModel;
 
 public class VistaModificarEvento extends javax.swing.JFrame {
     private ArrayList<Lugar> lugares;
+    // Constructor de la ventana
     public VistaModificarEvento(ArrayList<Lugar> lugares) {
         this.lugares = lugares;
         initComponents();
+        
+        // Se crea un modelo para el ComboBox
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (int i = 0; i < lugares.size(); i++)
         {
+            // Se agrega cada lugar (Su nombre) al modelo
             model.addElement(lugares.get(i).getNombre());
         }
+        // Se asigna dicho modelo al ComboBox en el JFrame
         jComboBoxLugares.setModel(model);
     }
 
@@ -143,21 +148,26 @@ public class VistaModificarEvento extends javax.swing.JFrame {
         Lugar lugar = lugares.get(num);
         String ss = lugar.listarEventosNombre();
         String[] arr = ss.split("\n");
+        // Se crea un modelo para el ComboBox
         DefaultComboBoxModel<String> modelEventos = new DefaultComboBoxModel<>();
         for (int i = 0; i < arr.length; i++)
         {
+            // Se agrega cada evento (Su nombre) al modelo
             modelEventos.addElement(arr[i]);
         }
+        // Se asigna dicho modelo al ComboBox en el JFrame
         jComboBoxEventos.setModel(modelEventos);
     }//GEN-LAST:event_jComboBoxLugaresActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        // Se cierra la ventana sin hacer cambios.
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void jComboBoxEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEventosActionPerformed
         // TODO add your handling code here:
+        // Al seleccionar un evento, se establece en los TextFields los valores de este.
         String nEvento = (String)jComboBoxEventos.getSelectedItem();
         int num = jComboBoxLugares.getSelectedIndex();
         txtNombre.setText(lugares.get(num).getEvento(nEvento).getNombre());
@@ -167,13 +177,14 @@ public class VistaModificarEvento extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        // Al presionar el boton de guardar, cambia los valores del evento en el lugar
         int num = jComboBoxLugares.getSelectedIndex();
         Lugar lugar = lugares.get(num);
         String nombreOriginal = lugares.get(num).getEvento((String)jComboBoxEventos.getSelectedItem()).getNombre();
         lugar.modificarEvento(txtNombre.getText(), Integer.parseInt(txtCAsistentes.getText()), txtTipo.getText(), nombreOriginal);
         
         
-        this.dispose();
+        this.dispose(); // Se cierra la ventana
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
